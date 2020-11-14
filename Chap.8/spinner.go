@@ -1,0 +1,4 @@
+package spinner
+
+func main() {
+}
