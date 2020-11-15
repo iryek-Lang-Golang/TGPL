@@ -26,4 +26,18 @@ s[0] = 'L' // compile error; cannot assign to s[0]
 \a	"alert" or bell
 \b	backspace
 \f	form feed
+\n	newline
+\r	carriage return
+\t	tab
+\v 	vertical tab
+\'	single quote (only in the rune literal '\'')
+\"	double quote (only within "..." literals)
+\\	backslash
 ```
+
+- Arbitrary bytes can be included in literal strings using hexadecimal or octal escapes.
+   - \xhh
+   - \ooo
+- A raw string literal is written `...` using backquotes instead of double quotes.
+   - A raw string literal may spread over several lines in the program source.
+   - The only processing is that carriage returns are deleted so that the value of the string is the same on all platforms.
