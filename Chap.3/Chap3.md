@@ -51,21 +51,24 @@ s[0] = 'L' // compile error; cannot assign to s[0]
   - Sorting UTF-8 works naturally.
 - There are no embedded NUL(zero) bytes.
 - UTF-8 is the preferred encoding for text strings manipulated by Go programs.
-- unicode/utf8 package
+- ```unicode/utf8``` package
 - Unicode escape
-```
-"世界"
-UTF-8: "\xe4\xb8\x96\xe7\x95\x8c
-16bit: "\u4e16\u754c
-32bit: "\U00004e16\U0000754c
-```
+   ```
+   "世界"
+   UTF-8: "\xe4\xb8\x96\xe7\x95\x8c
+   16bit: "\u4e16\u754c
+   32bit: "\U00004e16\U0000754c
+   ```
   - Unicode escapes may also be used in rune literals.
-  ```
-  '世' '\u4e16' '\U00004e16'
-  ```
+      ```
+      '世' '\u4e16' '\U00004e16'
+      ```
   - A rune whose value is less than 256 may be written with a single hexadecimal escape, such as 'x41' for 'a'
     - For higher values, a \u or \U escape must be used.
-      - UTF-8 encoding '\xe4\xb8\x96' is not a legal rune literal.
+      - UTF-8 encoding '\xe4\xb8\x96' is not a legal rune literal, even though those three bytes are a valid UTF-8
+encoding of a single code point.
+         - ```'\x41': 'a'```
+         - ```'\xe4\xb8\x96': not a valid rune literal```
 
 - Thanks to the nice properties of UTF-8, many string operations don't require decoding.
   - Test whether one string contains another as a prefix, a suffix, or a substring
